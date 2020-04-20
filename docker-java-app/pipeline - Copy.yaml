@@ -35,7 +35,7 @@ steps:
   inputs:
     azureSubscription: 'Free Trial (ff2997bf-b032-4d51-b7b9-06c9b89841fc)'
     appType: 'Web App on Linux'
-    WebAppName: 'webapp-linux'
+    WebAppName: 'linux-webap'
     packageForLinux: '$(Pipeline.Workspace)/drop/docker-java-app/target/find-links.jar'
     
 
