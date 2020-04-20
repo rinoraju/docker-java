@@ -25,13 +25,18 @@ steps:
     PathtoPublish: '$(build.artifactstagingdirectory)'
   condition: succeededOrFailed()
 
+- task: DownloadPipelineArtifact@2
+  inputs:
+    artifact: 'drop'
+    path: $(Pipeline.Workspace)/drop
+
 - task: AzureRmWebAppDeployment@4
   displayName: 'Deploy Azure App Service'
   inputs:
     azureSubscription: 'Free Trial (ff2997bf-b032-4d51-b7b9-06c9b89841fc)'
     appType: 'Web App on Linux'
     WebAppName: 'webapp-linux'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/drop/docker-java-app/target/find-links.jar'
+    packageForLinux: '$(Pipeline.Workspace)/drop/docker-java-app/target/find-links.jar'
     
 
 
